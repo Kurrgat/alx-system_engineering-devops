@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This script displays the content of the current directory in a list format, showing only the part of the name after the first dash
+
+# Loop through each file in the directory
+for file in *;
+do
+    # Check if the file is not hidden and is a regular file
+    if [ ! -f "$file" ] || [[ "$file" == .* ]];
+then
+        continue
+    fi
+    
+    # Get the part of the name after the first dash
+    name="${file#*-}"
+    
+    # Display the modified name
+    echo "$name"
+done
