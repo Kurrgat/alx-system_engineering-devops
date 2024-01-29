@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script displays a list of currently running processes
+
+# -a: Show processes for all users.
+# -u: Show detailed information about each process.
+# -x: Include processes that do not have a controlling terminal.
+# -f: Show a full-format listing.
+ps -auxf
