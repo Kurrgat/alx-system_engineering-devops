@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Script to display all active IPv4 IPs on the machine it's executed on
+
+# # Get machine's hostname
+hostname=$(hostname)
+
+# Use 'ping' command to resolve IPv4 address associated with the hostname
+ping -c 1 "$hostname" | awk '/^PING/{print $3}' | cut -d '(' -f2 | cut -d ')' -f1
