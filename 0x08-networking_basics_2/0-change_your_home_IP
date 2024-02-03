@@ -3,12 +3,7 @@
 # It ensures that when the server tries to access "localhost", it goes to the IP address 127.0.0.2,
 # and when it tries to access "facebook.com", it goes to the IP address 8.8.8.8.
 
-# Copy the current hosts file to a new temporary file
 cp /etc/hosts ~/hosts.new
-
-# Modify the temporary hosts file to point localhost to 127.0.0.2 and facebook.com to 8.8.8.8
 echo "127.0.0.2		localhost" > ~/hosts.new
 echo "8.8.8.8		facebook.com" >> ~/hosts.new
-
-# Overwrite the original hosts file with the modified temporary hosts file
-cp -f ~/hosts.new /etc/host
+cp -f ~/hosts.new /etc/hosts
