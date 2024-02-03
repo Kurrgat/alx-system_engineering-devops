@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-#!/usr/bin/env bash
 # Script to configure an Ubuntu server by modifying the hosts file.
 # It ensures that when the server tries to access "localhost", it goes to the IP address 127.0.0.2,
 # and when it tries to access "facebook.com", it goes to the IP address 8.8.8.8.
