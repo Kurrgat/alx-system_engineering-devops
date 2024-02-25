@@ -1,0 +1,39 @@
+https://docs.google.com/drawings/d/1pdsyQZwGxTFCINXnZNuIEon9dmAhoNdVoPDnJnkyaMY/edit?usp=sharing
+
+
+# Explanation of Web Infrastructure
+
+## Specifics About the Infrastructure:
+
+### What is a server?
+A server is a computer system or software program that provides functionality for other programs or devices, known as clients. In web hosting, a server stores website files and data and delivers them to users upon request over the internet.
+
+### What is the role of the domain name?
+A domain name is a human-readable address that helps users navigate the internet. It maps easily recognizable names (like "www.foobar.com") to numerical IP addresses that computers use to locate each other on the internet.
+
+### What type of DNS record www is in www.foobar.com?
+The "www" in "www.foobar.com" is typically a subdomain associated with the web server. It could be a CNAME (Canonical Name) record pointing to the domain itself or an A (Address) record pointing to the IP address of the server.
+
+### What is the role of the web server?
+The web server handles incoming HTTP requests from clients, processes them, and delivers web pages and other web content to clients over the internet. It acts as the intermediary between the user's request and the application server or database.
+
+### What is the role of the application server?
+The application server hosts and executes the application logic and business logic of a website or web application. It interprets requests from the web server, interacts with databases or other external systems, and generates dynamic content to be sent back to the web server.
+
+### What is the role of the database?
+The database stores, organizes, and manages structured data used by the web application. It allows for efficient storage and retrieval of information such as user accounts, product details, and other application data.
+
+### What is the server using to communicate with the computer of the user requesting the website?
+The server communicates with the user's computer over the internet using the HTTP (Hypertext Transfer Protocol) or HTTPS (HTTP Secure) protocols. When a user requests a webpage, their browser sends an HTTP request to the server, and the server responds by sending back the requested content.
+
+## Issues with the Infrastructure:
+
+### SPOF (Single Point of Failure)
+If any single component of the infrastructure fails (such as the server), the entire website could become inaccessible. This creates a vulnerability where a single failure could bring down the entire system.
+
+### Downtime during maintenance
+Maintenance tasks such as deploying new code or updating configurations may require the web server to be restarted or taken offline temporarily. During this time, the website may be inaccessible to users, resulting in downtime.
+
+### Scalability limitations
+A single server may struggle to handle sudden increases in traffic, leading to slow performance, errors, or crashes. This is especially problematic if the infrastructure is not designed to scale horizontally or vertically to accommodate increased demand.
+
