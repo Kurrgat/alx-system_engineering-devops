@@ -1,5 +1,4 @@
 # Puppet manifest to configure SSH client
-
 # Turn off password authentication
 file_line { 'Turn off passwd auth':
   path    => '/etc/ssh/sshd_config',
