@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Script to create an RSA key pair
+
+# Define variables
+KEY_NAME="school"
+BITS=4096
+PASSPHRASE="betty"
+
+# Generate the key pair
+ssh-keygen -t rsa -b $BITS -f $KEY_NAME -N $PASSPHRASE
+
+# Display information about the generated key pair
+echo "Generating public/private rsa key pair."
+echo "Your identification has been saved in $KEY_NAME."
+echo "Your public key has been saved in $KEY_NAME.pub."
+echo "The key fingerprint is:"
+ssh-keygen -lf $KEY_NAME.pub
+echo "The key's randomart image is:"
+ssh-keygen -lvf $KEY_NAME.pub
