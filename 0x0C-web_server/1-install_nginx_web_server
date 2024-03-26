@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Installs nginx server
+
+# Update package list
+apt-get update
+
+# Install Nginx
+apt-get -y install nginx
+
+# Allow Nginx HTTP traffic using UFW
+ufw allow 'Nginx HTTP'
+
+# Create a simple HTML page with "Hello World!"
+echo "Hello World!" > /var/www/html/index.html
+
+# Start Nginx service
+service nginx start
+
+# Display success message
+echo "Nginx installed and configured successfully."
