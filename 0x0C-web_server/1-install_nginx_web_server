@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 # Installs nginx server
 
-# Update package list
 apt-get update
+apt-get install -y nginx
 
-# Install Nginx
-apt-get -y install nginx
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+echo "Holberton School" > /etc/nginx/html/index.html
+printf %s "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /etc/nginx/html;
+     index       index.html index.htm;
+}
+" > /etc/nginx/sites-available/default
 
-# Allow Nginx HTTP traffic using UFW
-ufw allow 'Nginx HTTP'
-
-# Create a simple HTML page with "Hello World!"
-echo "Hello World!" > /var/www/html/index.html
-
-# Start Nginx service
-service nginx start
-
-# Display success message
-echo "Nginx installed and configured successfully."
+service nginx restart
