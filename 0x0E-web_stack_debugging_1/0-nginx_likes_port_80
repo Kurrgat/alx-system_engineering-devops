@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script configures Nginx to listen on port 80 of all the server’s active IPv4 IPs
+
+# Install Nginx (if not already installed)
+apt-get update
+apt-get install -y nginx
+
+# Create a symbolic link to sites-available in sites-enabled
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
+# Replace the default server block configuration to listen on port 80
+sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply the changes
+service nginx restart
