@@ -1,0 +1,1 @@
+Web stack debugging involves identifying and resolving issues within the various components of a web application stack. The web stack typically consists of several layers, including the front end, back end, server, and database. Debugging may be necessary when there are errors, performance issues, or unexpected behavior in the application.
