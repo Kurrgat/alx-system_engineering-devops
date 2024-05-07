@@ -1,30 +1,44 @@
 #!/usr/bin/python3
-"""Function to query a list of all hot posts on a given Reddit subreddit."""
+"""
+Queries the Reddit API recursively
+"""
+
 import requests
+import sys
 
 
-def recurse(subreddit, hot_list=[], after="", count=0):
-    """Returns a list of titles of all hot posts on a given subreddit."""
-    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
-    headers = {
-        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
-    }
-    params = {
-        "after": after,
-        "count": count,
-        "limit": 100
-    }
+def recurse(subreddit, hot_list=[], after=None):
+    """Returns a list containing the titles for a subreddit."""
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=100"
+    headers = {"User-Agent": "Custom User Agent"}
+    params = {"after": after} if after else {}
     response = requests.get(url, headers=headers, params=params,
-                            allow_redirects=False)
-    if response.status_code == 404:
+                            allow_redirects=False)  # Corrected indentation
+
+    if response.status_code == 200:
+        data = response.json()
+        posts = data['data']['children']
+        if posts:
+            for post in posts:
+                hot_list.append(post['data']['title'])
+            after = data['data']['after']
+            if after:
+                return recurse(subreddit, hot_list, after)
+            else:
+                return hot_list
+        else:
+            return hot_list
+    else:
         return None
 
-    results = response.json().get("data")
-    after = results.get("after")
-    count += results.get("dist")
-    for c in results.get("children"):
-        hot_list.append(c.get("data").get("title"))
 
-    if after is not None:
-        return recurse(subreddit, hot_list, after, count)
-    return hot_list
+if __name__ == "__main__":
+    subreddit = sys.argv[1] if len(sys.argv) > 1 else None
+    if subreddit:
+        result = recurse(subreddit)
+        if result is not None:
+            print(len(result))
+        else:
+            print("None")
+    else:
+        print("Please pass an argument for the subreddit to search.")
